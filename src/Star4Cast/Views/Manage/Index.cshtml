@@ -1,0 +1,93 @@
+﻿@using Star4Cast.ViewModels.Manage
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Manage your account";
+}
+
+
+
+<div class="row">
+    <div class="container">
+        <div class="page-heading">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="section section-container">
+            <dl class="dl-horizontal">
+                <dt>Password:</dt>
+                <dd>
+                    @if (Model.HasPassword)
+                    {
+                        <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
+                    }
+                </dd>
+                @*<hr />
+                    <dt>External Logins:</dt>
+                    <dd>
+
+                        @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
+                    </dd>*@
+                <hr />
+                <dt>Phone Number:</dt>
+                <dd>
+                    @(Model.PhoneNumber ?? "None")
+                    @if (Model.PhoneNumber != null)
+                    {
+                        <br />
+                        <div class="padding-top-10">
+                            <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed padding-top-15">Change</a>
+                        </div>
+                        <div class="padding-top-10">
+                            <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
+                                [<button type="submit" class="btn-link">Remove</button>]
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
+                    }
+
+                </dd>
+                <hr />
+                <dt>Email:</dt>
+                <dd>
+                    @(Model.Email ?? "None")
+                    @if (Model.Email != null)
+                    {
+                        <br />
+                        <div class="padding-top-15">
+                            <a asp-controller="Manage" asp-action="AddEmail" class="btn-bracketed">Change</a>
+                            <span class="text-warning">Chang the email will change userid also. </span>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="AddEmail" class="btn-bracketed">Add</a>
+                    }
+                </dd>
+
+                @*<hr />
+                    <dt>Two-Factor Authentication:</dt>
+                    <dd>
+                        @if (Model.TwoFactor)
+                        {
+                            <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
+                                Enabled <button type="submit" class="btn-link btn-bracketed">Disable</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
+                                <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
+                            </form>
+                        }
+                    </dd>*@
+            </dl>
+        </div>
+    </div>
+</div>

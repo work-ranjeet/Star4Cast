@@ -1,0 +1,10 @@
+﻿@model Star4Cast.ViewModels.ProfileManage.UserJobCat
+
+<div class="col-xs-6 col-sm-6 col-md-3 padding-15">
+    <input asp-for="@Model.CatId" type="hidden" />
+    <input asp-for="@Model.CatName" type="hidden" />
+    <input asp-for="@Model.IsUserCategory" type="checkbox" />
+    <label asp-for="@Model.DispName">@Model.DispName</label>
+    <input asp-for="@Model.DispName" type="hidden" />
+    <input asp-for="@Model.UserJobCatId" type="hidden" />
+</div>

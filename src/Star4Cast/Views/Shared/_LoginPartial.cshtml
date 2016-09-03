@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Star4Cast.Models.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <ul class="pull-right header-top-menu">
+
+            <li>
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-briefcase">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-envelope-o">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-comment-o">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+            <li class="user-setting-menu-opener">
+                @*<a asp-controller="Manage" asp-action="Index" title="Manage">Hello! @UserManager.GetFirstNameByUserIdAsync(UserManager.GetUserId(User))</a>*@
+
+                <a asp-controller="ProfileEdit" asp-action="TalentProfileViewAs">Hello! @UserManager.GetFirstNameByUserIdAsync(UserManager.GetUserId(User))</a>
+                <div class="user-setting-menu">
+                    <div class="heading">
+                        <span class="fa fa-gears"></span>
+                        &nbsp;<span>Account & Settings</span>
+                    </div>
+                    <div class="">
+                        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%;">
+                            <tbody>
+                                <tr class="setting-list">
+                                    <td class="padding-5">
+                                        <a asp-controller="ProfileManage" asp-action="TalentProfile">
+                                            <span class="fa fa-user"></span>
+                                            Manage Profile
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="setting-list">
+                                    <td class="padding-5">
+                                        <a asp-controller="Manage" asp-action="Index">
+                                            <span class="fa fa-gear"></span>
+                                            Manage Account
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="setting-list">
+                                    <td class="padding-5">
+                                        <a asp-controller="Manage" asp-action="Index">
+                                            <span class="fa fa-money"></span>
+                                            Manage Membership
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="setting-list">
+                                    <td class="padding-5">
+                                        <a asp-controller="Manage" asp-action="Index">
+                                            <span class="fa fa-unlock-alt"></span>
+                                            Manage Privecy
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="setting-list">
+                                    <td class="padding-5">
+                                        <span class="fa fa-sign-out"></span>
+                                        <button type="submit" class="text-error padding-0" style="background: transparent; border: none; font-size: 14px;">Log Out</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </li>
+            @*<li>
+                    <button type="submit" class="text-error" style="background: transparent; border: none; font-size: 14px;">Log off</button>
+                </li>*@
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="pull-right header-top-menu">
+        <li>
+            @*<span class="fa fa-sign-in" style="float:left; padding-top: 18px;"></span>*@
+            <span class="fa fa-sign-in"></span>
+            <a asp-action="Login" asp-controller="Account">Sign In</a>
+            @*<a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>*@
+        </li>
+    </ul>
+}
+
+
+@*<a asp-controller="Profile" asp-action="TalentProfile">
+           <button class="btn btn-info login-img-link">
+               <img src="~/css/icons/ranjeet.jpg" data-li-src="" id="profileImage" class="img-defer nav-profile-photo" alt="Ranjeet Kumar">
+           </button>
+    </a>*@

@@ -1,0 +1,56 @@
+﻿<section id="physicalAppreanceEdit">
+    <div class="row">
+        <div class="container section page-heading">
+            <h1>Photography Details</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container section">
+            <div class="section-container">
+                <form action="#" method="post" class="form padding-10" role="form">
+                    <div class="row">
+                       
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <label class="profile-edit-label">Photography experience</label>
+                                <div class="profile-edit-container">
+                                    <select name="photographyExperience" id="photographyExperience" class="form-control">
+                                        <option selected="selected" value="0">Please select...</option>
+                                        <option value="524">Amateur photographer</option>
+                                        <option value="523">Photography student</option>
+                                        <option value="522">Part-time professional (paid work)</option>
+                                        <option value="521">Full-time professional (paid work)</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <label class="profile-edit-label">Photography website</label>
+                                <div class="profile-edit-container">
+                                    <input type="text" class="form-control" placeholder="http://www.website.com" />
+                                </div>
+                            </div>
+                      
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="profile-edit-label">Photography experience</label>
+                                <div class="profile-edit-container">
+                                    <textarea style="width:100%; min-height:100px;" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center padding-15">
+                        <a asp-controller="Profile" asp-action="TalentProfileViewAs" id="btnCancle" class="btn-profile-edit-cancle btn btn-danger">Cancle</a>
+                        <button id="btnSave" class="btn-profile-edit-save btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section Scripts {
+
+}

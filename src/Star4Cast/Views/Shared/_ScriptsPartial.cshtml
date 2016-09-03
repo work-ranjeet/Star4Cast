@@ -1,0 +1,65 @@
+﻿<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-ui/build/angular-ui.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-translate/angular-translate.js"></script>
+    <script src="~/lib/underscore/underscore.js"></script>
+
+    <script src="~/Scripts/App.js"></script>
+   
+    <script src="~/Scripts/i18n/i18n.js"></script>
+    <script src="~/Scripts/i18n/locale.en-US.js"></script>
+    <script src="~/Scripts/Constants/Constants.js"></script>
+    <script src="~/Scripts/Factory/Helper.js"></script>
+    <script src="~/Scripts/Factory/UrlProvider.js"></script>
+
+    <script src="~/Scripts/mainCtrl.js"></script>
+
+
+    <script src="~/Scripts/Services/UserService.js"></script>
+    <script src="~/Scripts/Services/ProfileSrvice.js"></script>
+
+    <script src="~/Scripts/Controller/ProfileController.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<environment names="Staging,Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+    </script>
+</environment>

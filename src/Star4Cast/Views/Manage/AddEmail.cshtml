@@ -1,0 +1,30 @@
+﻿@using Star4Cast.ViewModels.Manage
+
+@model AddEmailViewModel
+@{
+    ViewData["Title"] = "Email";
+}
+
+<div class="row">
+    <div class="container">
+        <div class="page-heading">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <form asp-controller="Manage" asp-action="AddEmail" method="post" class="form-horizontal section section-container">
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-2 control-label">Email Id</label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Add Email Id</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

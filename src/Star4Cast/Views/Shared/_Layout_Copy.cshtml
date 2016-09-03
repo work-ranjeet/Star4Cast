@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarIn</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="~/lib/bootstrap-switch-master/dist/css/bootstrap-switch.css" rel="stylesheet" />
+        <link href="~/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute" />
+        <link href="~/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body ng-app="StarIn">
+    <header>
+        @Html.Partial("_MenuTopPartial")
+    </header>
+    <div id="bodySction" class="body-content" ng-controller="mainCtrl">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="menu-container-footer">
+                        <ul class="menu-footer">
+                            <li><a href="#">Auditions & Jobs</a></li>
+                            <li><a href="#">Success Stories</a></li>
+                            <li><a href="#">Talent Dictionary</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Conact Us</a></li>
+                            <li><a href="#">Trust & Safety</a></li>
+                            <li><a href="#">Contact for advertisment</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-center-menu" style="text-align: center; font-size:14px;">
+                        <a class="#" href="#" id="registerLink">Auditions & Jobs</a>
+                        <a href="#" id="registerLink">Talent Dictionary</a>
+                        <a href="#" id="registerLink">Success Stories</a>
+                        <a href="#" id="registerLink">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="padding:5px; text-align:center; margin-top:10px;">
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="padding:5px; min-height:100px;">
+                </div>
+            </div>
+            <div class="row" style="font-size:15px;">
+                <div class="col-xs-12 text-center text-info">
+                    <p>
+                        We are the No. 1 talent website of India. Our mission is to provide a platform for all over the world people connected with the entertainment, television media and advertising.
+                        <br />
+                        We are not responsible for any outside content. If you have any problam with our site content and images then
+                        <a class="text-danger" href="#">Contct us.</a>
+                    </p>
+                </div>
+                <div class="col-xs-12 text-center" style="padding:10px; font-size:14px;">
+                    <bdi>Copyright © 2016 StarIn.com</bdi>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
+        <script src="~/lib/bootstrap-switch-master/dist/js/highlight.js"></script>
+        <script src="~/lib/bootstrap-switch-master/dist/js/main.js"></script>
+        <script src="~/lib/angular/angular.js"></script>
+        <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="~/lib/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="~/lib/angular-resource/angular-resource.js"></script>
+        <script src="~/lib/angular-animate/angular-animate.js"></script>
+        <script src="~/lib/angular-translate/angular-translate.js"></script>
+        <script src="~/scripts/app.js"></script>
+        <script src="~/scripts/mainctrl.js"></script>
+        <script src="~/lib/underscore/underscore.js"></script>
+        <script src="~/scripts/i18n/locale.en-us.js"></script>
+        @*<script src="~/scripts/app.js" asp-append-version="false"></script>*@
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js" asp-fallback-src="~/lib/jquery/dist/jquery.min.js" asp-fallback-test="window.jQuery"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js" asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>
+
+        <script src="~/scripts/app.js"></script>
+        <script src="~/scripts/mainctrl.js"></script>
+        <script src="~/scripts/i18n/locale.en-us.js"></script>
+        @*<script src="~/js-mins/app-min.js" asp-append-version="true"></script>*@
+    </environment>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        //$(function () {
+        //    var stickyMenu = $('#stickyMenu').offset().top;
+
+        //    $(window).scroll(function () {
+        //        if ($(window).scrollTop() > stickyMenu) {
+        //            $('#stickyMenu').css({ position: 'fixed', width: '100%', top: '0px' });
+        //        } else {
+        //            $('#stickyMenu').css({ position: 'static', width: '100%', top: '0px' });
+        //        }
+
+
+        //    });
+        //});
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

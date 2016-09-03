@@ -1,0 +1,292 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="searchSection" class="home-section home-hero-section">
+    <div class="container">
+        <div class="row">
+            <span class="heading">Discover talents or be discovered</span>
+            <span class="heading-title">Wanted: actors, models, musicians, and more.</span>
+            <span class="heading-subtitle"><bdi style="color:red;">61,022</bdi> roles for all ages, looks, and levels of experience.</span>
+        </div>
+        <div class="row home-hero-search-container">
+            <div class="form-inline" style="text-align: center; text-align:-webkit-center;">
+                <div class="form-group">
+                    <select class="form-control input-lg" id="Category" name="Category">
+                        <option value="/">All auditions &amp; jobs</option>
+                        <option value="actors-wanted">Acting jobs</option>
+                        <option value="models-wanted">Modelling jobs</option>
+                        <option value="dancers-wanted">Dancing jobs</option>
+                        <option value="musicians-wanted">Music jobs</option>
+                        <option value="stylists-wanted">Stylist jobs</option>
+                        <option value="magazines-newspapers">Magazine jobs</option>
+                        <option value="photographers-wanted">Photography jobs</option>
+                        <option value="crew-wanted">Film &amp; Stage Crew jobs</option>
+                        <option value="tv-reality">TV &amp; Reality jobs</option>
+                    </select>
+                </div>
+                @*<div class="form-group">
+                        <select class="form-control input-lg" id="Location" name="Location">
+                            <option value="/">Worldwide</option>
+                            <option selected="selected" value="india">In India</option>
+                            <option disabled="disabled" value="/">----------</option>
+                            <option value="australia">In Australia</option>
+                            <option value="canada">In Canada</option>
+                            <option value="france">In France</option>
+                            <option value="germany">In Germany</option>
+                            <option value="ireland">In Ireland</option>
+                            <option value="nz">In New Zealand</option>
+                            <option value="south-africa">In South Africa</option>
+                            <option value="uk">In the UK</option>
+                            <option value="usa">In the USA</option>
+                        </select>
+                    </div>*@
+                <div class="form-group">
+                    <select class="form-control input-lg" id="Gender" name="Gender">
+                        <option value="a">Any gender</option>
+                        <option value="f">For Females</option>
+                        <option value="m">For Males</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input id="cmd-home-search" type="submit" class="btn search-btn input-lg" value="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="profileSection" class="home-section home-create-profile-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <span class="heading">Create your profile</span>
+                    <span class="heading-title">Don't stand outside, create your own portfolio with videos & photos.</span>
+                    <span class="heading-subtitle">Show your talent and catch the eye of professionals.</span>
+                </div>
+                <div class="row" style="text-align:center;">
+                    <a asp-controller="Account" asp-action="SignUp"  class="btn btn-success home-create-profile">Create your profile</a>
+                </div>
+                <div class="row" style="text-align:center;">
+                    <button id="planAndPrice" name="planAndPrice" class="btn btn-warning home-plan-price">Plan & Price</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="castingSection" class="home-section home-casting-post-section">
+    <div class="container">
+        <div class="row">
+            <span class="heading">Looking for talent? We will provide you the best.</span>
+            <span class="heading-title">Discover thousands of models, actors, musicians and other creatives by</span>
+            <span class="heading-subtitle">
+                picking from my&nbsp;
+                <a href="#">Talent Directory</a>
+                &nbsp;or&nbsp;
+                <a href="#">Place a free casting call.</a>
+            </span>
+        </div>
+        <div class="row" style="text-align:center;">
+
+            <button id="btnTalentDirectory" name="btnTalentDirectory" class="btn btn-success home-talent-directory">
+                <i class="glyphicon glyphicon-globe" style="font-size:35px; float:left;"></i>
+                <span>Talent Directory</span>
+            </button>
+        </div>
+        <div class="row" style="text-align:center;">
+            <button id="btnPlaceAFreeCastingCall" name="btnPlaceAFreeCastingCall" class="btn btn-success home-place-casting-call">
+                <i class="glyphicon glyphicon-bullhorn" style="font-size:35px; float:left;"></i>
+                <span> Place Casting Call</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="newComersSection" class="home-section home-new-comers-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <span class="heading">Newly Registered Members</span>
+                    <span class="heading-title">
+                        Know some randomly selected, newly registered members.
+                        <a asp-controller="Account" asp-action="SignUp" >Create your profile</a>
+                        now to get known!
+                    </span>
+                </div>
+                <div class="row text-center" style="padding-top:20px;">
+
+                    <div class="col-sm-3 new-comers-img-container">
+
+                        @*<img src="~/css/icons/femail.png" />*@
+                        <img src="~/css/icons/vikash.jpg" />
+                        <span class="img-name" style="display:block;">Vikash</span>
+                        <span class="img-details" style="display:block;">
+                            Hi..i m shivam gautam.....acting is my life.....or m apne aap ko prof [...]
+                            <a chref="#" class="btn btn-link">More...</a>
+                        </span>
+
+
+                    </div>
+                    <div class="col-sm-3 new-comers-img-container">
+
+                        @*<img src="~/css/icons/femail.png" />*@
+                        <img src="~/css/icons/ranjeet.jpg" />
+                        <span class="img-name" style="display:block;">Ranjeet Kumar</span>
+                        <span class="img-details" style="display:block;">
+                            Hi..i m shivam gautam.....acting is my life.....or m apne aap ko prof [...]
+                            <a chref="#" class="btn btn-link">More...</a>
+                        </span>
+
+
+                    </div>
+                    <div class="col-sm-3 new-comers-img-container">
+
+
+                        <img src="~/css/icons/vikash.jpg" />
+                        <span class="img-name" style="display:block;">Vikash</span>
+                        <span class="img-details" style="display:block;">
+                            Hi..i m shivam gautam.....acting is my life.....or m apne aap ko prof [...]
+                            <a chref="#" class="btn btn-link">More...</a>
+                        </span>
+
+
+                    </div>
+                    <div class="col-sm-3 new-comers-img-container">
+
+                        <img src="~/css/icons/ranjeet.jpg" />
+                        <span class="img-name" style="display:block;">Ranjeet Kumar</span>
+                        <span class="img-details" style="display:block;">
+                            Hi..i m shivam gautam.....acting is my life.....or m apne aap ko prof [...]
+                            <a chref="#" class="btn btn-link">More...</a>
+                        </span>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reviewsSection" class="home-section home-review-section">
+    <div class="container">
+        <span class="heading-title">We are helping new members to find work, land an agent, and gain industry experience!</span>
+        <div class="row text-center" style="padding-top:20px;">
+            <div class="col-sm-4 img-container">
+                <img src="~/css/icons/vikash.jpg" />
+                <p class="img-details">
+                    I was cast as Marlene Moon in The Great Gatsby and my raw film test was used in the final edit of the film.
+                    This was all thanks to an extras ad placed on StarNow... I don't think any bigger dreams could come true. Thank&nbsp;you!
+                </p>
+            </div>
+            <div class="col-sm-4 img-container">
+                <img src="~/css/icons/ranjeet.jpg" />
+                <p class="img-details">
+                    I was cast as Marlene Moon in The Great Gatsby and my raw film test was used in the final edit of the film.
+                    This was all thanks to an extras ad placed on StarNow... I don't think any bigger dreams could come true. Thank&nbsp;you!
+                </p>
+            </div>
+            <div class="col-sm-4 img-container">
+                <img src="~/css/icons/vikash.jpg" />
+                <p class="img-details">
+                    I was cast as Marlene Moon in The Great Gatsby and my raw film test was used in the final edit of the film.
+                    This was all thanks to an extras ad placed on StarNow... I don't think any bigger dreams could come true. Thank&nbsp;you!
+                </p>
+            </div>
+        </div>
+        <div class="row text-center" style="padding-top:20px;">
+            <a asp-controller="Account" asp-action="SignUp"  class="btn btn-success create-profile">Create your profile</a>
+        </div>
+    </div>
+</section>
+
+<section id="jobListSection" class="home-section home-joblist-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a class="btn job-list-count-link-container" href="#">
+                            <div class="job-list-title">Acting Extras</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Modelling</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Music</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Dancing</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">TV & Reality</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Photography</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Film &amp; Stage Crew</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-success  job-list-count-link-container" href="#">
+                            <div class="job-list-title">Stylists</div>
+                            <div class="job-count">44 Jobs</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="new-job-container">
+                    <div class="new-job-heading">
+                        <span class="glyphicon glyphicon-bullhorn" style="font-size:22px; padding-top:2px;"></span>
+                        &nbsp;<span>Top 10 New Jobs</span>
+                    </div>
+                    <div class="new-job-list">
+                        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%;">
+                            <tbody>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                                <tr style="border-bottom:solid 1px #ccc; height:35px;"><td>&nbsp;</td></tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

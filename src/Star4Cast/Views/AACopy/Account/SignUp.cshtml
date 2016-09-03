@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "SignUp";
+}
+<section class="section-signup">
+    <div class="container">
+        <div class="container-box">
+            <div class="form-wrapper">
+                <div class="form-section">
+                    <h1>Discover talents or be discovered</h1>
+                </div>
+                <h3> Get started - it's free. It takes few minutes to create your profile.</h3>
+
+                <h3 style="margin-top: -14px;">
+                    Looking for talent?&nbsp;
+                    <a href="#">Register as a casting professional</a>
+                </h3>
+            </div>
+            <form action="#" method="post" class="form" role="form">
+                <div class="row form-group">
+                    <div class="col-xs-6 col-md-6">
+                        <input class="form-control" name="firstname" placeholder="First Name" type="text" autofocus />
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <input class="form-control" name="lastname" placeholder="Last Name" type="text" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="youremail" placeholder="Your Email" type="email" />
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="password" placeholder="New Password" type="password" />
+                </div>
+                <div class="form-group">
+                    <label for="">Birth Date</label>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            <select class="form-control">
+                                <option value="Month">Month</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select class="form-control">
+                                <option value="Day">Day</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select class="form-control">
+                                <option value="Year">Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender <span class="req">*</span></label>
+                    <div class="row">
+                        <div class="btn-group" data-toggle="buttons" style="padding:15px; padding-top:0px;">
+                            <label class="btn btn-default" style="width:100px;"><input type="radio" name="sex" id="inlineCheckbox1" value="male" checked="checked" />Male</label>
+                            <label class="btn btn-default" style="width:100px;"><input type="radio" name="sex" id="inlineCheckbox2" value="female" />Female</label>
+                            <label class="btn btn-default" style="width:100px;"><input type="radio" name="sex" id="inlineCheckbox2" value="others" />Others</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <p class="disclosure-text">
+                    By clicking
+                    <span id="disclosure-cta">Join now</span>, you agree to StarIn's
+                    <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/user-agreement?trk=uno-reg-guest-home-user-agreement">User Agreement</a>,
+                    <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/privacy-policy?trk=uno-reg-guest-home-privacy-policy">Privacy Policy</a>, and
+                    <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/cookie-policy?trk=uno-reg-guest-home-cookie-policy">Cookie Policy</a>.
+                </p>
+                <br />
+                <br />
+                <a asp-controller="Account" asp-action="EmailConfirmation" class="btn btn-lg btn-primary btn-block" >
+                    Sign up
+                </a>
+                @*<button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign up
+                </button>*@
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(function (argument) {
+            $('input[name=Gender]:radio').bootstrapSwitch();
+            //$('#Gender').bootstrapSwitch();
+        });
+
+        function click() {
+            //alert($('input[name=year]:checked').val());
+
+            alert($(this).serialize());
+
+            return false;
+        });
+    </script>
+}

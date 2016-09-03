@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Email - Confirmation";
+}
+<section class="section-emailConfirmation">
+    <div class="container" style="text-align:center; padding-top:22px;">
+        <div class="section txt-center confirm-email">
+            <div class="fa fa-envelope-o" style="zoom:6"></div>
+            <h1 class="topMargin10">Thanks {{Ranju}}!</h1>
+            <h2 style="color:#c25757;">Please confirm your email to complete your registration.</h2>
+            <br>
+            <p style="max-width: 600px; margin-left: auto; margin-right: auto; font-size:18px;">
+               Open the email we've just sent to <strong>2005.ranjeet@gmail.com</strong>
+                and you'll be on your&nbsp;way!
+            </p>
+
+            <a target="_blank" class="btn btn-info topMargin10" href="https://mail.google.com">
+                Go to Gmail
+            </a>
+
+            <form method="POST" style="border-top: 1px solid #ddd; padding-top: 2rem; max-width: 430px; margin: 30px auto 0; font-size: 14px;" name="resend" id="not-received">
+                <input type="hidden" name="resend" value="true">
+                <p class="txt-bold">Didn't get the email?</p>
+                <p>
+                    Check your spam folder for the email,<br>
+                    <span class="a nounder" onclick="document.getElementById('not-received').submit();">send the email again</span>,
+                    or <a asp-controller="Account" asp-action="ChangeEmail">change your email address</a>.
+                </p>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+}

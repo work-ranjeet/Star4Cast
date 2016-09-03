@@ -1,0 +1,32 @@
+﻿@using System.Collections.Generic
+@using StarIn.Models.Account
+@using Microsoft.AspNet.Http
+@using Microsoft.AspNet.Http.Authentication
+@model StarIn.ViewModels.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="container">
+    <div class="login-box">
+     
+        <form class="form-signin" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" >
+            <h3 class="form-signin-heading no-margin bt-margin10">Signin</h3>
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="Email" asp-for="Email" class="form-control bt-margin10" placeholder="Email address" required autofocus>
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <label for="inputPassword">Password</label>
+            <input type="password" id="Password" asp-for="Password" class="form-control" placeholder="Password" required>
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="RememberMe" name="RememberMe" value="remember-me"> Remember me | Forgot password?
+                </label>
+            </div>
+            <button class="btn btn-lg theme-btn btn-block bt-margin10" type="submit">Sign in</button>
+            <p>Not yet registered? <a asp-controller="Account" asp-action="SignUp">Signup here</a></p>
+        </form>
+    </div>
+</div>

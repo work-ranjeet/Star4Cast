@@ -1,0 +1,33 @@
+﻿@model Star4Cast.ViewModels.ProfileManage.UserJobCategoryViewModal
+
+<section id="physicalAppreanceEdit">
+    <div class="row">
+        <div class="container section page-heading">
+            <h1>Job Category</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container section">
+            <form action="JobCategory" method="post" class="form padding-10" role="form">
+                <label>
+                    <span class="item-heading-label">Select as your interests?</span>
+                    <span class="text-bottom">
+                        We use this to match you with relevant auditions & jobs.
+                    </span>
+                </label>
+                <div class="item-detail" style="font-size:16px;">
+                    <input id="UserId" name="UserId" asp-for="@Model.UserId" type="hidden" />
+                    @if (Model != null)
+                    {
+                        @Html.EditorFor(m => m.UserJobCatList)
+                    }
+                  
+                </div>
+                <div class="col-sm-12 text-center padding-15">
+                    <a asp-controller="ProfileManage" asp-action="TalentProfile" id="btnCancle" class="btn-profile-edit-cancle btn btn-danger">Close</a>
+                    <button id="btnSave" class="btn-profile-edit-save btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

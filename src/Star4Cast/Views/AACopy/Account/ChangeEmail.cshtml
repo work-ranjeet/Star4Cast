@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+<div class="container">
+    <div class="mail-change-box">
+        <form class="form-mail-chang">
+            <h3 class="form-signin-heading no-margin bt-margin10">Change your email address</h3>
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" class="form-control bt-margin10" placeholder="Email address" required autofocus>
+                
+            <div class="row" style="text-align:center;">
+                <div class="col-sm-6 "  style="text-align:right;"><a  class="btn btn-danger" asp-controller="Account" asp-action="EmailConfirmation">Cancle</a></div>
+                <div class="col-sm-6" style="text-align:left;"><button class="btn  btn-success"  type="submit">Update</button></div>
+            </div>    
+           
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<div class="header">
+    <div class="container">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+            <div style="float: left;">
+                <span style="color: #f4f2f1; font-size: 22px;">Star</span>
+                <span style="color: #F88017; font-size: 22px;">In</span>
+            </div>
+        </a>
+        <ul class="header-top-menu pull-left">
+            <li><a asp-controller="Jobs" asp-action="NewJobListing">List a Job</a></li>
+            <li><a asp-controller="Account" asp-action="Register">Success Stories</a></li>
+            <li><a asp-controller="Search" asp-action="Index">Talent Dictionary</a></li>
+            <li><a asp-controller="Jobs" asp-action="NewJobListing">Auditions & Jobs</a></li>
+        </ul>
+        @await Html.PartialAsync("_LoginPartial")
+
+    </div>
+
+</div>
+

@@ -1,0 +1,247 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+
+<section id="registration" class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-heading"><h1>Register as talent</h1></div>
+            <p>
+                It takes just a few minutes to create your free profile.
+                <br>Looking for talent?
+                <a href="/register/RegisterAdvertiser.aspx">Register as a casting professional</a>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row section">
+        <div class="col-sm-12 ">
+            <div class="">
+                <p>
+                    <a href="#" onclick="snfb.authorizefb()" class="btn btn-facebook mobile-full">
+                        <span class="icon-facebook"></span>Connect with Facebook
+                    </a>
+                </p>
+                <p class="help">* We don’t post anything without your permission.</p>
+                <div class="or-divider">
+                    <div>or</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-sm-12 col-lg-12">
+            <h3>What are your interests?</h3>
+            <p class="help">We use this to match you with relevant auditions & jobs.</p>
+
+            <div class="row form-section text-center form-group">
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Acting" type="checkbox" name="Acting"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Acting"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Modelling" type="checkbox" name="Modelling"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Modelling"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Musician" type="checkbox" name="Musician"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Musician"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Photography" type="checkbox" name="Photography"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Photography"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="TVReality" type="checkbox" name="TVReality"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="TV & Reality"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Dancing" type="checkbox" name="Dancing"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Dancing"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="FilmStageCrew" type="checkbox" name="FilmStageCrew"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Film & Stage Crew"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+                <div class="col-sm-6 col-lg-4 padding-10">
+                    <input id="Stylist" type="checkbox" name="Stylist"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Stylist"
+                           data-handle-width="120"
+                           data-on-color="success" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row section">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 personal-info">
+            <h3>Enter Your Personal Details</h3>
+            <div class="form-group">
+                <label>First name <span class="req">*</span></label>
+                <input type="text" class="form-control input input-sm">
+            </div>
+            <div class="form-group">
+                <label>Last name <span class="req">*</span></label>
+                <input type="text" class="form-control input input-sm">
+            </div>
+            <div class="form-group">
+                <label>Gender <span class="req">*</span></label>
+                <div style="display:block">
+                    <input type="radio" name="Gender" checked
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Male"
+                           data-on-color="success"
+                           data-handle-width="45"
+                           class="switch-radio1">
+                    &nbsp;
+                    &nbsp;
+                    <input type="radio" name="Gender"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Female"
+                           data-on-color="success"
+                           data-handle-width="45"
+                           class="switch-radio1">
+                    &nbsp;
+                    &nbsp;
+                    <input type="radio" name="Gender"
+                           data-on-text="Yes"
+                           data-off-text="No"
+                           data-label-text="Others"
+                           data-on-color="success"
+                           data-handle-width="45"
+                           class="switch-radio1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Birth date <span class="req">*</span></label>
+                <div style="display:block; color:#949494; font-weight: 500;">
+                    <label style="width:100px; white-space:nowrap;">
+                        <span>Day </span>
+                        <input type="text" class="form-control input-sm ">
+                    </label>
+                    <label style="width:107px;">
+                        <span>Month </span>
+                        <select name="birthDate_month" id="birthDate_month" class="input-sm">
+                            <option value="0"></option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </label>
+                    <label style="width:100px; white-space:nowrap;">
+                        <span>Year </span>
+                        <input type="text" class="form-control input-sm ">
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 personal-info">
+            <div class="form-group">
+                <label class="control-label" for="email">Email</label>
+                <input type="email" class="form-control input input-sm">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Country</label>
+                <select class="form-control input input-sm">
+                    <option>Select Country</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">State</label>
+                <select class="form-control input input-sm">
+                    <option>Select state</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">City</label>
+                <select class="form-control input input-sm">
+                    <option>Select city</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="inputSuccess1">Location</label>
+                <input type="text" class="form-control input input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 personal-info">
+            <input type="checkbox"> I have read and understood and agree to the Terms and Conditions governing the use of naukri.com.
+        </div>
+    </div>
+
+</section>
+@section Scripts {
+    <script>
+        $(function (argument) {
+            $('#Acting').bootstrapSwitch();
+            $('#Modelling').bootstrapSwitch();
+            $('#Musician').bootstrapSwitch();
+            $('#Photography').bootstrapSwitch();
+            $('#TVReality').bootstrapSwitch();
+            $('#Dancing').bootstrapSwitch();
+            $('#FilmStageCrew').bootstrapSwitch();
+            $('#Stylist').bootstrapSwitch();
+
+            $('input[name=Gender]:radio').bootstrapSwitch();
+            //$('#Gender').bootstrapSwitch();
+        });
+    </script>
+}
