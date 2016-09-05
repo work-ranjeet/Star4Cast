@@ -102,8 +102,8 @@ namespace Star4Cast.Models.Common
 
     public enum StatusEnum
     {
-       Active,
-       NotActive
+        NotActive,
+        Active
     }
 
 }

@@ -11,6 +11,8 @@ using Star4Cast.Models.Identity;
 using Star4Cast.ViewModels.ProfileManage;
 using Star4Cast.Models.Profile;
 using Star4Cast.Models.Common;
+using Star4Cast.Data.Repository;
+using Microsoft.Extensions.Configuration;
 
 namespace Star4Cast.Controllers
 {
@@ -109,7 +111,14 @@ namespace Star4Cast.Controllers
         {
             return await Task.Run(() =>
             {
-                var about = (from abt in _profileDbContext.UserDetails where abt.UserId == this.UserId select new { About = abt.About, UserId = abt.UserId, NickName = abt.Nickname }).FirstOrDefault();
+                var about = (from abt in _profileDbContext.UserDetails
+                             where abt.UserId == this.UserId
+                             select new
+                             {
+                                 About = abt.About,
+                                 UserId = abt.UserId,
+                                 NickName = abt.Nickname
+                             }).FirstOrDefault();
 
                 var userAboutViewModel = new UserAboutViewModel()
                 {
@@ -119,27 +128,8 @@ namespace Star4Cast.Controllers
                     UserSocialAddressList = new List<UserSocilaAddVM>()
                 };
 
-                var userSocialAddressJoin = from socialAdd in _profileDbContext.SocialAddress.Where(sa => sa.Status == 1)
-                                            from userSocialAdd in _profileDbContext.UserSocialAddress.Where(usa => usa.SocialAddressId == socialAdd.Id && usa.Status == 1 && usa.UserId == this.UserId).DefaultIfEmpty()
-                                            select new { socialAdd, userSocialAdd };
-
-                userSocialAddressJoin.ToList().ForEach(val =>
-                {
-                    userAboutViewModel.UserSocialAddressList.Add(
-                        new UserSocilaAddVM
-                        {
-                            UserSocialAddressId = val.userSocialAdd != null ? val.userSocialAdd.Id : new Guid(),
-                            SosialUserName = val.userSocialAdd != null ? val.userSocialAdd.SocialUserName : string.Empty,
-                            SocialName = val.socialAdd.SocialName,
-                            PreUrl = val.socialAdd.PreUrl,
-                            PostUrl = val.socialAdd.PostUrl,
-                            PostLabel = val.socialAdd.PostLabel,
-                            HelpUrl = val.socialAdd.HelpUrl,
-                            IconClass = val.socialAdd.IconClass
-                            //Status = StatusEnum.Active
-                        });
-
-                });
+                var userSocialAddressResult = SocialAddressRepository.Instance.GetSocialAddressAsync(this.UserId);
+                userAboutViewModel.UserSocialAddressList.AddRange(userSocialAddressResult.Result);
 
                 return View(userAboutViewModel);
             });
@@ -165,13 +155,13 @@ namespace Star4Cast.Controllers
                 userAboutVM.UserSocialAddressList.ForEach(val =>
                 {
                     var socialAddressId = _profileDbContext.SocialAddress.FirstOrDefault(v => v.SocialName == val.SocialName).Id;
-                    if (val.UserSocialAddressId == new Guid())
+                    if (val.UserSocialAddressId.ToString() == new Guid().ToString())
                     {
                         _profileDbContext.UserSocialAddress.Add(
                             new UserSocialAddress
                             {
-                                Status = 1,
-                                //SocialUserName = val.SosialUserName,
+                                Status = Convert.ToInt32(StatusEnum.Active),
+                                SocialUserName = val.SocialUserName,
                                 UserId = UserId,
                                 SocialAddressId = socialAddressId
                             });
@@ -179,20 +169,20 @@ namespace Star4Cast.Controllers
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(val.SosialUserName))
+                        if (string.IsNullOrEmpty(val.SocialUserName))
                         {
-                            var toDelete = _profileDbContext.UserSocialAddress.Where(v => v.Id == val.UserSocialAddressId).FirstOrDefault();
+                            var toDelete = _profileDbContext.UserSocialAddress.Where(v => v.Id.ToString() == val.UserSocialAddressId.ToString()).FirstOrDefault();
                             if (toDelete != null)
                                 _profileDbContext.UserSocialAddress.Remove(toDelete);
                         }
                         else
                         {
-                            var toUpdate = _profileDbContext.UserSocialAddress.Where(v => v.Id == val.UserSocialAddressId).FirstOrDefault();
+                            var toUpdate = _profileDbContext.UserSocialAddress.Where(v => v.Id.ToString() == val.UserSocialAddressId.ToString()).FirstOrDefault();
 
                             if (toUpdate != null)
                             {
-                                //toUpdate.SocialUserName = val.SosialUserName;
-                                //toUpdate.Status = val.Status;
+                                toUpdate.SocialUserName = val.SocialUserName;
+                                toUpdate.Status = Convert.ToInt32(StatusEnum.Active);
                                 _profileDbContext.UserSocialAddress.Update(toUpdate);
                             }
                         }
@@ -200,6 +190,8 @@ namespace Star4Cast.Controllers
                 });
 
                 _profileDbContext.SaveChanges();
+                userAboutVM.UserSocialAddressList.Clear();
+                userAboutVM.UserSocialAddressList.AddRange(SocialAddressRepository.Instance.GetSocialAddressAsync(this.UserId).Result);
                 return View(userAboutVM);
             });
         }

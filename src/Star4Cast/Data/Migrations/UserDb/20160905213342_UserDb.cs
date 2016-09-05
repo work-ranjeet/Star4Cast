@@ -162,11 +162,13 @@ namespace Star4Cast.Migrations
                 {
                     UserAddressId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Addressee = table.Column<string>(maxLength: 150, nullable: false),
+                    AppOrHouseName = table.Column<string>(maxLength: 150, nullable: false),
                     CityOrTown = table.Column<string>(maxLength: 100, nullable: false),
                     Country = table.Column<string>(maxLength: 50, nullable: false),
                     DttmCreted = table.Column<DateTime>(nullable: false),
                     DttmModified = table.Column<DateTime>(nullable: false),
+                    Flat = table.Column<string>(maxLength: 50, nullable: false),
+                    LandMark = table.Column<string>(maxLength: 200, nullable: false),
                     LineOne = table.Column<string>(maxLength: 200, nullable: false),
                     LineTwo = table.Column<string>(maxLength: 200, nullable: true),
                     StateOrProvince = table.Column<string>(maxLength: 100, nullable: false),

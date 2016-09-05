@@ -1,5 +1,7 @@
 ﻿@model Star4Cast.ViewModels.ProfileManage.UserAboutViewModel
-
+<script>
+    //$scope.aboutText = @Model.About
+</script>
 <section id="physicalAppreanceEdit">
     <div class="container">
         <div class="row page-heading">
@@ -11,8 +13,11 @@
                 <form action="About" method="post" class="form padding-10" role="form">
                     <div class="form-group theme-padding-control">
                         <label class="control-label">About me</label>
-                        <textarea id="about" name="about" spellcheck="true" maxlength="1500" class="form-control" style="min-height:150px; width:100%;"></textarea>
-                        <span class="help"><strong class="theme-color">1500</strong> character remainings</span>
+                        <textarea id="about" name="about" spellcheck="true" maxlength="1500" class="form-control" style="min-height:235px; width:100%;"
+                                  ng-init="aboutText ='@Model.About'" ng-model="aboutText">
+                            {{aboutText}}
+                        </textarea>
+                        <span class="help" style="padding: 8px;"><strong class="theme-color" id="charcounter">{{1500 - aboutText.length}}&nbsp;</strong> characters remainings</span>
                     </div>
                     <hr />
                     <div class="form-group theme-padding-control">
@@ -26,13 +31,16 @@
                         <fieldset>
                             <label class="control-label">Social Links</label>
                             <p class="help" style="display:block;">
-                                Do you wat to display your social platforms on <i class="theme-color">{{WebName}}</i> profile? <br />Enter your username or URL for the social platforms you want to display. <i>To make the most of this feature, ensure each profile is set to public.</i>
+                                Do you wat to display your social platforms on
+                                <i class="theme-color">{{WebName}}</i> profile? <br />
+                                Enter your username or URL for the social platforms you want to display.
+                                <i>To make the most of this feature, ensure each profile is set to public.</i>
                             </p>
 
                             @if (Model != null)
                             {
                                 @Html.EditorFor(m => m.UserSocialAddressList)
-                            }                           
+                            }
                         </fieldset>
                     </div>
 

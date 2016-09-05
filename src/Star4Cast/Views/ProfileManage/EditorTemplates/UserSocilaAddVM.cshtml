@@ -9,9 +9,10 @@
     </label>
     <a style="font-size: 45px; margin-top: -4px; vertical-align: middle;" class="@Model.IconClass"></a>
    
-    <input asp-for="@Model.SosialUserName" type="text" value="@Model.SosialUserName" maxlength="199" size="56" placeholder="@Model.PostLabel" class="theme-texbox-custom" style="width:45%;" />
+    <input asp-for="@Model.SocialUserName" type="text" value="@Model.SocialUserName" maxlength="199" size="56" placeholder="@Model.PostLabel" class="theme-texbox-custom" style="width:45%;" />
     <input asp-for="@Model.UserSocialAddressId" value="@Model.UserSocialAddressId" type="hidden"/> 
     <input asp-for="@Model.SocialName" value="@Model.SocialName" type="hidden"/>
+    <input asp-for="@Model.Status" value="@Model.Status" type="hidden" />
     <input asp-for="@Model.PostUrl" value="@Model.PostUrl" type="hidden"/>
     <input asp-for="@Model.PostLabel" value="@Model.PostLabel" type="hidden"/>
     <input asp-for="@Model.PreUrl" value="@Model.PreUrl" type="hidden"/>

@@ -131,32 +131,39 @@
             </div>
 
             @* About *@
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 section-profile-item-container" style="border-bottom-left-radius:0;border-bottom-right-radius:0;">
+            <div class="row section-profile-item-container">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 " style="border-bottom-left-radius:0;border-bottom-right-radius:0;">
                     <div class="item-heading-container">
                         <span class="item-heading-label">About</span>
                         <a asp-controller="ProfileManage" asp-action="About" class="fa fa-edit item-edit" title="Edit"></a>
                     </div>
                     <div class="item-detail-label" style="min-height:100px;">
-                        @*I processed 7 years in  IT industries. I designated as Senior Software Engineer at Thomson Reuters.
-                            I like friendly work environment where each and every people can keep your thought as well as they are identified by his and her work. I am cool and positive in nature.
-
-                            I believe that I am having sound knowledge in  .NET MVC, Angular, Bower, JQuery, C#.NET, ASP.NET and WebApi. Expertise in ADO.NET, WCF, LINQ, PLINQ as well as having knowledge of Infragistics control. I am extensively worked with ADO.NET classes like SQL Connections, SQL Command, SQL Data Adapter, Dataset and Data Reader. For UI side I worked on WebApps using AngularJS, Bower, TypeScript and Krma.*@
+                        {{UserAbout.about}}
+                    </div>                   
+                    <div class="col-xs-12 ">
+                        <hr />
+                        <dl class="display:block; margin-top: -20px;">
+                            <dt class="fa " style="padding:10px;">
+                                <span>{{WebName}}&nbsp; profile :</span>
+                                <span ng-if="UserAbout.nickName == null">profile link.</span>
+                                <a ng-if="UserAbout.nickName != null" class="link-social" href="{{social.preUrl + social.nickName}}" target="_blank">
+                                    {{social.preUrl + social.nickName}}
+                                </a>
+                            </dt>
+                            <dt ng-repeat="social in UserAbout.userSocialAddressList" class="{{social.iconClass}}" style="display:block; padding:10px;">
+                                <span>{{social.socialName}}:&nbsp;</span>
+                                <span ng-if="social.socialUserName == null">Share, to boost your rofile.</span>
+                                <a ng-if="social.socialUserName != null" class="link-social" href="{{social.preUrl + social.socialUserName}}" target="_blank">
+                                    {{social.preUrl + social.socialUserName}}
+                                </a>
+                                @*<a ng-if="social.socialUserName != null"   class="fa fa-edit" style="padding-left:10px;"></a>*@
+                            </dt>
+                        </dl>
                     </div>
-                   
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 section-profile-item-container" style="border-top-left-radius:0;border-top-right-radius:0;">                   
-                    <div class="item-detail" style="font-size:16px;">
-                        <div class="col-sm-12 span-text" style="border-bottom: dotted #d2d2d2 thin;">Profile address : NA</div>
-                        <div class="col-sm-12 span-text" style="border-bottom: dotted #d2d2d2 thin;">Facebook address : NA</div>
-                        <div class="col-sm-12 span-text" style="border-bottom: dotted #d2d2d2 thin;">Twitter address : NA</div>
-                        <div class="col-sm-12 span-text">Youtube address : NA</div>
-                    </div>
-                </div>
-            </div>
 
+            @* User info *@
             <section class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 section-profile-item-container">
                     <div class="item-heading-container">
@@ -239,18 +246,6 @@
 
 @section Scripts {
 
-    @*<script>
-            $("#profileActionToggleClickButton").click(function () {
-                $("#profileContactAction").toggle('blind', '', 500);
-            });
-
-        </script>*@
-    <script>
-        $("#profileActionToggleClickButton").click(function () {
-            $("#profileContactAction").toggle('blind', '', 500);
-        });
-
-    </script>
 
 }
 
@@ -338,110 +333,4 @@
                 <img src="~/css/icons/ranjeet.jpg" />
             </div>
         </div>
-        @*<div id="profileContactAction" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 profileContactAction-more-info">
-                <div class="row">
-                    <h3 class="heading-line">Manage you account & privecy<em></em></h3>
-                    <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <dl>
-                            <dt style="padding:0px;">Address:</dt>
-                            <dd>S1, Sai Sanidhi Appartment, NS Palaya, 2nd A Cross, 3rd Main</dd>
-                            <dd>Bangalore, Karnatka, India</dd>
-                        </dl>
-                    </div>
-                    <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <dl>
-                            <dd>Phone : 09535304488(Mobile)<a class="fa fa-edit" title="Edit"></a></dd>
-                            <dd>Email : er.ranjeetkumar@gmai.com</dd>
-                            <dd>IM : er.ranjeet(skype)</dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:20px;">
-                    <h3 class="heading-line">Visible to everyone<em></em></h3>
-                    <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <dl class="display:block;">
-                            <dt class="fa fa-facebook-square">
-                                <span>Facebook</span>
-                                <a class="fa fa-edit" style="padding-left:10px;"></a>
-                            </dt>
-
-                            <dt class="fa fa-twitter-square">
-                                <span>Twitter</span>
-                                <a class="fa fa-edit" style="padding-left:10px;"></a>
-                            </dt>
-
-                            <dt class="fa fa-globe">
-                                <span>Website</span>
-                                <a class="fa fa-edit" style="padding-left:10px;"></a>
-                            </dt>
-                        </dl>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 profile-actions">
-                <div style="width:65%; float:left;">
-                    <span class="fa fa-globe">&nbsp;https://in.linkedin.com/in/ranjeetkumar1783</span>
-                    <a class="fa fa-cog" href="#" title="Update your public profile settings"></a>
-                </div>
-                <div id="profileActionToggleClickButton" class="profile-action-toggle-click-btton ">
-                    <a href="#">
-                        <span class="fa fa-folder" style="zoom:1; font-size:18px; padding: 5px">
-                        </span><span>Contact Info</span>
-                    </a>
-                </div>
-            </div><div id="profileContactAction" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 profileContactAction-more-info">
-            <div class="row">
-                <h3 class="heading-line"><em></em></h3>
-                <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <dl>
-                        <dt style="padding:0px;"></dt>
-                        <dd></dd>
-                        <dd></dd>
-                    </dl>
-                </div>
-                <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <dl>
-                        <dd><a class="fa fa-edit" title="Edit"></a></dd>
-                        <dd></dd>
-                        <dd></dd>
-                    </dl>
-                </div>
-            </div>
-            <div class="row" style="padding-top:20px;">
-                <h3 class="heading-line"><em></em></h3>
-                <div class="ol-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <dl class="display:block;">
-                        <dt class="fa fa-facebook-square">
-                            <span></span>
-                            <a class="fa fa-edit" style="padding-left:10px;"></a>
-                        </dt>
-
-                        <dt class="fa fa-twitter-square">
-                            <span></span>
-                            <a class="fa fa-edit" style="padding-left:10px;"></a>
-                        </dt>
-
-                        <dt class="fa fa-globe">
-                            <span></span>
-                            <a class="fa fa-edit" style="padding-left:10px;"></a>
-                        </dt>
-                    </dl>
-                </div>
-            </div>
-
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 profile-actions">
-            <div style="width:65%; float:left;">
-                <span class="fa fa-globe"></span>
-                <a class="fa fa-cog" href="#" title="Update your public profile settings"></a>
-            </div>
-            <div id="profileActionToggleClickButton" class="profile-action-toggle-click-btton ">
-                <a href="#">
-                    <span class="fa fa-folder" style="zoom:1; font-size:18px; padding: 5px">
-                    </span><span></span>
-                </a>
-            </div>
-        </div>*@
+       *@

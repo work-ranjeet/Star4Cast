@@ -10,8 +10,12 @@ namespace Star4Cast.Models.Identity
     {
         public int UserAddressId { get; set; }
 
+        [MaxLength(50)]
+        public string Flat { get; set; }
+
         [MaxLength(150)]
-        public string Addressee { get; set; }
+        [Display(Name = "Appartment/House Name")]
+        public string AppOrHouseName { get; set; }
 
         [MaxLength(200)]
         [Display(Name = "Line One")]
@@ -35,6 +39,9 @@ namespace Star4Cast.Models.Identity
 
         [MaxLength(50)]
         public string Country { get; set; }
+
+        [MaxLength(200)]        
+        public string LandMark { get; set; }
 
         public DateTime DttmCreted { get; set; } = DateTime.UtcNow;
 

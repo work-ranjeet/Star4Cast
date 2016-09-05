@@ -11,6 +11,7 @@ using NuGet.Packaging;
 using Star4Cast.Data.DBContext.ProfileDb;
 using Star4Cast.Models.Profile;
 using Star4Cast.ViewModels.ProfileManage;
+using Star4Cast.Data.Repository;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -100,6 +101,35 @@ namespace Star4Cast.Api
             
             return userCatList.OrderBy(v => v.DispName);
         });
+
+        [HttpGet]
+        public async Task<UserAboutViewModel> GetUserAbout()
+        {
+            return await Task.Run(() =>
+            {
+                var about = (from abt in _dbContext.UserDetails
+                             where abt.UserId == this.UserId
+                             select new
+                             {
+                                 About = abt.About,
+                                 UserId = abt.UserId,
+                                 NickName = abt.Nickname
+                             }).FirstOrDefault();
+
+                var userAboutViewModel = new UserAboutViewModel()
+                {
+                    UserId = this.UserId,
+                    About = about != null ? about.About : string.Empty,
+                    NickName = about != null ? about.NickName : string.Empty,
+                    UserSocialAddressList = new List<UserSocilaAddVM>()
+                };
+
+                var userSocialAddressResult = SocialAddressRepository.Instance.GetSocialAddressAsync(this.UserId);
+                userAboutViewModel.UserSocialAddressList.AddRange(userSocialAddressResult.Result);
+
+                return userAboutViewModel;
+            });
+        }
 
 
         // POST api/values

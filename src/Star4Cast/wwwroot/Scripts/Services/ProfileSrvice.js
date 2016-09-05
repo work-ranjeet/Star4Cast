@@ -5,11 +5,12 @@
     //profile.$inject = ['$http'];
 
     function profile($location, $resource, UrlProvider) {
-        var getJobCategory = $resource(UrlProvider.Profile.GetJobCategory);
-        var getcurrenUserAddress = $resource(UrlProvider.User.GetUser);
+        //var getJobCategory = $resource(UrlProvider.Profile.GetJobCategory);
+        //var getcurrenUserAddress = $resource(UrlProvider.User.GetUser);
         return {
-            GetJobCategory: getJobCategory,
-            GetCurrentUserJobCategories: $resource(UrlProvider.Profile.GetCurrentUserJobCategories)
+            GetJobCategory: $resource(UrlProvider.Profile.GetJobCategory),
+            GetCurrentUserJobCategories: $resource(UrlProvider.Profile.GetCurrentUserJobCategories),
+            GetUserAbout: $resource(UrlProvider.Profile.GetUserAbout)
         }
 
         

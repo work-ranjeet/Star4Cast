@@ -13,8 +13,8 @@
         </div>
         <div class="section section-container">
             <dl class="dl-horizontal">
-                <dt>Password:</dt>
-                <dd>
+                <dt class="padding-top-10">Password:</dt>
+                <dd class="padding-top-10">
                     @if (Model.HasPassword)
                     {
                         <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
@@ -31,8 +31,8 @@
                         @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
                     </dd>*@
                 <hr />
-                <dt>Phone Number:</dt>
-                <dd>
+                <dt class="padding-top-10">Phone Number:</dt>
+                <dd class="padding-top-10">
                     @(Model.PhoneNumber ?? "None")
                     @if (Model.PhoneNumber != null)
                     {
@@ -53,15 +53,15 @@
 
                 </dd>
                 <hr />
-                <dt>Email:</dt>
-                <dd>
+                <dt class="padding-top-10">Email:</dt>
+                <dd class="padding-top-10">
                     @(Model.Email ?? "None")
                     @if (Model.Email != null)
                     {
                         <br />
                         <div class="padding-top-15">
                             <a asp-controller="Manage" asp-action="AddEmail" class="btn-bracketed">Change</a>
-                            <span class="text-warning">Chang the email will change userid also. </span>
+                            <span class="help">Chang the email will change userid also. </span>
                         </div>
 
                     }
@@ -87,6 +87,17 @@
                             </form>
                         }
                     </dd>*@
+
+                <hr />
+                <dt class="padding-top-10">Address:</dt>
+                <dd class="padding-top-10">                    
+                    <span style="display:block; line-height:30px;">@Model.Address.Flat, @Model.Address.AppOrHouseName</span>
+                    <span style="display:block; line-height:30px;">@Model.Address.LineOne, @Model.Address.LineTwo</span>
+                    <span style="display:block; line-height:30px;">@Model.Address.CityOrTown, @Model.Address.StateOrProvince, @Model.Address.Country</span>
+                    <span style="display:block; line-height:30px;">Landmark : @Model.Address.LandMark</span>
+                    <a asp-controller="Manage" asp-action="ChangeAddress" class="btn-bracketed padding-top-15" style="display:block;">Change</a>
+                </dd>
+
             </dl>
         </div>
     </div>

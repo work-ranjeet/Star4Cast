@@ -27,7 +27,9 @@ namespace Star4Cast.ViewModels.ProfileManage
     {
         public Guid UserSocialAddressId { get; set; }
 
-        public string SosialUserName { get; set; }
+        public int Status { get; set; }
+
+        public string SocialUserName { get; set; }
 
         public string SocialName { get; set; }
 

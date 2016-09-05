@@ -9,13 +9,15 @@ namespace Star4Cast.Models.Identity
 {
     public interface IAddress
     {
-        string Addressee { get; set; }
+        string Flat { get; set; }
+        string AppOrHouseName { get; set; }
         string LineOne { get; set; }
         string LineTwo { get; set; }
         string CityOrTown { get; set; }
         string StateOrProvince { get; set; }
         string ZipOrPostalCode { get; set; }
         string Country { get; set; }
+        string LandMark { get; set; }
         DateTime DttmCreted { get; set; }
         DateTime DttmModified { get; set; }
     }
@@ -24,13 +26,15 @@ namespace Star4Cast.Models.Identity
     {
         public static void CopyTo(this IAddress from, IAddress to)
         {
-            to.Addressee = from.Addressee;
+            to.Flat = from.Flat;
+            to.AppOrHouseName = from.AppOrHouseName;
             to.LineOne = from.LineOne;
             to.LineTwo = from.LineTwo;
             to.CityOrTown = from.CityOrTown;
             to.StateOrProvince = from.StateOrProvince;
             to.ZipOrPostalCode = from.ZipOrPostalCode;
             to.Country = from.Country;
+            to.LandMark = from.LandMark;
         }
 
         public static TAddress CloneTo<TAddress>(this IAddress from)

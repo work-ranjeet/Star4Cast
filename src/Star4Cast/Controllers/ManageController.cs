@@ -10,24 +10,34 @@ using Star4Cast.Models;
 using Star4Cast.Services;
 using Star4Cast.ViewModels.Manage;
 using Star4Cast.Models.Identity;
+using Star4Cast.Data.Repository;
 
 namespace Star4Cast.Controllers
 {
     [Authorize]
+    [ValidateAntiForgeryToken]
     public class ManageController : Controller
     {
+        private string _userid = null;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
-        public ManageController(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IEmailSender emailSender,
-        ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+        private string UserId
+        {
+            get
+            {
+                return string.IsNullOrEmpty(_userid) ? _userManager.GetUserId(HttpContext.User) : _userid;
+            }
+            set { this._userid = value; }
+        }
+
+        public ManageController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
+            IEmailSender emailSender, 
+            ISmsSender smsSender, 
+            ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -49,6 +59,7 @@ namespace Star4Cast.Controllers
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : message == ManageMessageId.AddEmailSuccess ? "Your email has been changed."
+                : message == ManageMessageId.ChangeAddressSuccess ? "Your address has been modified."
                 : "";
 
             var user = await GetCurrentUserAsync();
@@ -56,6 +67,8 @@ namespace Star4Cast.Controllers
             {
                 return View("Error");
             }
+
+            var address = await UserRepository.Instance.GetUserAddressAsync(UserId);
             var model = new IndexViewModel
             {
                 HasPassword = await _userManager.HasPasswordAsync(user),
@@ -63,7 +76,9 @@ namespace Star4Cast.Controllers
                 Email = await _userManager.GetEmailAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
                 Logins = await _userManager.GetLoginsAsync(user),
-                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user)
+                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
+                HasAddress = address!= null,
+                Address = address
             };
             return View(model);
         }
@@ -71,7 +86,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
         {
             ManageMessageId? message = ManageMessageId.Error;
@@ -97,7 +111,6 @@ namespace Star4Cast.Controllers
 
        
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddEmail(AddEmailViewModel model)
         {
             if (!ModelState.IsValid)
@@ -138,7 +151,6 @@ namespace Star4Cast.Controllers
 
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
         {
             if (!ModelState.IsValid)
@@ -174,7 +186,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EnableTwoFactorAuthentication()
         {
             var user = await GetCurrentUserAsync();
@@ -189,7 +200,6 @@ namespace Star4Cast.Controllers
 
         // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DisableTwoFactorAuthentication()
         {
             var user = await GetCurrentUserAsync();
@@ -220,7 +230,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
         {
             if (!ModelState.IsValid)
@@ -245,7 +254,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/RemovePhoneNumber
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemovePhoneNumber()
         {
             var user = await GetCurrentUserAsync();
@@ -271,8 +279,7 @@ namespace Star4Cast.Controllers
 
         //
         // POST: /Manage/ChangePassword
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]       
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -306,7 +313,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/SetPassword
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SetPassword(SetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -356,7 +362,6 @@ namespace Star4Cast.Controllers
         //
         // POST: /Manage/LinkLogin
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
@@ -405,6 +410,7 @@ namespace Star4Cast.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ChangeAddressSuccess,
             Error
         }
 

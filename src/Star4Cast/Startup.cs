@@ -17,11 +17,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Star4Cast.Data.DBContext.UserDb;
 using Star4Cast.Models.Identity;
+using Star4Cast.Data.Configuration;
 
 namespace Star4Cast
 {
     public class Startup
     {
+        public static IConfigurationRoot ConfigurationRoot { get; private set; }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -36,7 +38,8 @@ namespace Star4Cast
             }
 
             builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
+            ConfigurationRoot = Configuration = builder.Build();
+            //ConfigurationSingleton.Instance.Configuration = Configuration;
         }
 
         public IConfigurationRoot Configuration { get; }

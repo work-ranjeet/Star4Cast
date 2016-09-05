@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using Star4Cast.Data.Repository;
 using System.Threading.Tasks;
 
 namespace Star4Cast.Models.Identity
@@ -13,6 +14,21 @@ namespace Star4Cast.Models.Identity
             return user.Result.FirstName;
         }
 
-       
+        public static async Task<bool> HasAddressAsync<TUser>(this UserManager<TUser> User, string UserId) where TUser : class
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                var address = UserRepository.Instance.GetUserAddressAsync(UserId).Result;
+                return address != null;
+            });
+        }
+
+        public static async Task<UserAddress> GetAddressAsync<TUser>(this UserManager<TUser> User, string UserId) where TUser : class
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return UserRepository.Instance.GetUserAddressAsync(UserId).Result;
+            });
+        }
     }
 }

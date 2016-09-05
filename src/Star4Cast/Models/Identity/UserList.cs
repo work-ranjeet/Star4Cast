@@ -23,13 +23,15 @@ namespace Star4Cast.Models.Identity
                 UserName = "er.ranjeetkumar@gmail.com",
                 Addresses = { new UserAddress()
                 {
-                    LineOne = "S1, Sai sanidhi Appartment",
-                    LineTwo = "@nd A Cross, 3rd Main, NS Palaya, BTM 2nd Stage",
+                    Flat = "S1",
+                    AppOrHouseName ="Sai sanidhi Appartment",
+                    LineOne = "2nd A Cross, 3rd Main",
+                    LineTwo = "NS Palaya, BTM 2nd Stage",
                     CityOrTown = "Bangalore",
                     StateOrProvince = "Karnatka",
                     ZipOrPostalCode = "560067",
                     Country = "India",
-                    Addressee = "Near Orchid International School, Lake Road"
+                    LandMark = "Near Orchid International School, Lake Road"
                 }}
             }
         };

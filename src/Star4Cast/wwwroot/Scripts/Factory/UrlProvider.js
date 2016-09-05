@@ -16,7 +16,8 @@
             },
             Profile: {
                 GetJobCategory: this._domain + "/web/Profile/GetJobCategory",
-                GetCurrentUserJobCategories: this._domain + "/web/Profile/GetCurrentUserJobCategories"
+                GetCurrentUserJobCategories: this._domain + "/web/Profile/GetCurrentUserJobCategories",
+                GetUserAbout: this._domain + "/web/Profile/GetUserAbout"
             }
         }
 

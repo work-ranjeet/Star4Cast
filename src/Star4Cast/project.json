@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Star4Cast-ee91b83e-d808-48a5-9eab-6dfe478c0878",
 
   "dependencies": {
@@ -42,7 +42,9 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Dapper": "1.50.1",
+    "BundlerMinifier.Core": "2.2.281"
   },
 
   "tools": {

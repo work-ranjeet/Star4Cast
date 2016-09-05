@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Star4Cast.Models.Identity;
 
 namespace Star4Cast.ViewModels.Manage
 {
@@ -19,5 +20,9 @@ namespace Star4Cast.ViewModels.Manage
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public bool HasAddress { get; set; }
+
+        public UserAddress Address { get; set; }
     }
 }

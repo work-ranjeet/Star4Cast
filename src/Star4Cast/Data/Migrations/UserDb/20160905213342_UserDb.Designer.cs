@@ -8,7 +8,7 @@ using Star4Cast.Data.DBContext.UserDb;
 namespace Star4Cast.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20160903115555_UserDb")]
+    [Migration("20160905213342_UserDb")]
     partial class UserDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,7 +200,7 @@ namespace Star4Cast.Migrations
                     b.Property<int>("UserAddressId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Addressee")
+                    b.Property<string>("AppOrHouseName")
                         .IsRequired()
                         .HasAnnotation("MaxLength", 150);
 
@@ -215,6 +215,14 @@ namespace Star4Cast.Migrations
                     b.Property<DateTime>("DttmCreted");
 
                     b.Property<DateTime>("DttmModified");
+
+                    b.Property<string>("Flat")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 50);
+
+                    b.Property<string>("LandMark")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
                     b.Property<string>("LineOne")
                         .IsRequired()

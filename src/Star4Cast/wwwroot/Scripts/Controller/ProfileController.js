@@ -31,5 +31,11 @@
             //$scope.ShowJobCategory = true;
             $scope.CurrentUserJobCategories = result;
         });
+
+        $scope.UserAbout = [];
+        Profile.GetUserAbout.get(function (result) {
+            //$scope.ShowJobCategory = true;
+            $scope.UserAbout = result;
+        });
     }
 })();
