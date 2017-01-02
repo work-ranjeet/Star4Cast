@@ -1,0 +1,66 @@
+﻿@model Star4Cast.ViewModels.ProfileManage.TalentInfoViewModel
+<script>
+
+</script>
+<section id="physicalAppreanceEdit">
+    <div class="container">
+        <div class="row page-heading">
+            <h1>Your info</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 section">
+                <form action="About" method="post" class="form padding-10" role="form">
+                    <div class="item-detail" style="font-size:16px;">
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label"> Nick Name :</span>
+                            <input asp-for="@Model.Nickname" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label"> D.O.B :</span>
+                            <input asp-for="@Model.DateOfBirth" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Age :</span>
+                            <span asp-for="@Model.Age" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Marital Status :</span>
+                            <input asp-for="@Model.MaritalStatus" type="text" class="form-control" />
+                        </div>
+                        @*<div class="col-sm-6 span-text">
+                                Gender :<input asp-for="@Model.gen" type="text" />
+                            </div>*@
+
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Blood Group :</span>
+                            <input asp-for="@Model.BloodGroup" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Mother Tongue :</span>
+                            <input asp-for="@Model.MotherTongue" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Religion :</span>
+                            <input asp-for="@Model.Religion" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Health Information :</span>
+                            <input asp-for="@Model.HealthInfo" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 span-text">
+                            <span class="control-label">Disability :</span>
+                            <input asp-for="@Model.Disability" type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 text-center padding-15">
+                        <hr />
+                        <a asp-controller="ProfileManage" asp-action="TalentProfile" id="btnCancle" class="btn-profile-edit-cancle btn btn-danger">Close</a>
+                        <button id="btnSave" class="btn-profile-edit-save btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

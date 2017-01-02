@@ -33,7 +33,7 @@ namespace Star4Cast.Api
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<dynamic> GetCurrent()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -66,7 +66,7 @@ namespace Star4Cast.Api
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<UserAddress> GetCurrentUserAddress() => await Task.Run(() =>
         {
             return _dbContext.UserAddresses.FirstOrDefault(v => v.UserId == this.UserId);

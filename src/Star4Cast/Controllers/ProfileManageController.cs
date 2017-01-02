@@ -196,5 +196,95 @@ namespace Star4Cast.Controllers
             });
         }
 
+        [HttpGet] // Your info
+        public async Task<IActionResult> TalentInfo()
+        {
+            return await Task.Run(() =>
+            {
+                var info = (from abt in _profileDbContext.UserDetails
+                            where abt.UserId == this.UserId
+                            select abt).FirstOrDefault();
+
+                var talentInfoViewModel = new TalentInfoViewModel()
+                {
+                    UserId = this.UserId,
+                    Nickname = info.Nickname ?? string.Empty,
+                    DateOfBirth = info.DateOfBirth,
+                    Age = info.Age,
+                    BloodGroup = info.BloodGroup,
+                    Disability = info.Disability,
+                    HealthInfo = info.HealthInfo,
+                    MaritalStatus =info.MaritalStatus,
+                    MotherTongue = info.MotherTongue,
+                    Religion= info.Religion
+
+
+                };
+
+                return View(talentInfoViewModel);
+            });
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> TalentInfo(TalentInfoViewModel talentInfoVM)
+        //{
+        //    return await Task.Run(() =>
+        //    {
+        //        var about = _profileDbContext.UserDetails.ToList().Find(select => select.UserId == UserId);
+        //        if (about != null)
+        //        {
+        //            about.About = userAboutVM.About;
+        //            about.Nickname = userAboutVM.NickName;
+        //            _profileDbContext.UserDetails.Update(about);
+        //        }
+        //        else
+        //        {
+        //            _profileDbContext.UserDetails.Add(new UserDetail { UserId = UserId, About = userAboutVM.About, Nickname = userAboutVM.NickName });
+        //        }
+
+        //        userAboutVM.UserSocialAddressList.ForEach(val =>
+        //        {
+        //            var socialAddressId = _profileDbContext.SocialAddress.FirstOrDefault(v => v.SocialName == val.SocialName).Id;
+        //            if (val.UserSocialAddressId.ToString() == new Guid().ToString())
+        //            {
+        //                _profileDbContext.UserSocialAddress.Add(
+        //                    new UserSocialAddress
+        //                    {
+        //                        Status = Convert.ToInt32(StatusEnum.Active),
+        //                        SocialUserName = val.SocialUserName,
+        //                        UserId = UserId,
+        //                        SocialAddressId = socialAddressId
+        //                    });
+
+        //            }
+        //            else
+        //            {
+        //                if (string.IsNullOrEmpty(val.SocialUserName))
+        //                {
+        //                    var toDelete = _profileDbContext.UserSocialAddress.Where(v => v.Id.ToString() == val.UserSocialAddressId.ToString()).FirstOrDefault();
+        //                    if (toDelete != null)
+        //                        _profileDbContext.UserSocialAddress.Remove(toDelete);
+        //                }
+        //                else
+        //                {
+        //                    var toUpdate = _profileDbContext.UserSocialAddress.Where(v => v.Id.ToString() == val.UserSocialAddressId.ToString()).FirstOrDefault();
+
+        //                    if (toUpdate != null)
+        //                    {
+        //                        toUpdate.SocialUserName = val.SocialUserName;
+        //                        toUpdate.Status = Convert.ToInt32(StatusEnum.Active);
+        //                        _profileDbContext.UserSocialAddress.Update(toUpdate);
+        //                    }
+        //                }
+        //            }
+        //        });
+
+        //        _profileDbContext.SaveChanges();
+        //        userAboutVM.UserSocialAddressList.Clear();
+        //        userAboutVM.UserSocialAddressList.AddRange(SocialAddressRepository.Instance.GetSocialAddressAsync(this.UserId).Result);
+        //        return View(userAboutVM);
+        //    });
+        //}
+
     }
 }
