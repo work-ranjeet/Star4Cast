@@ -43,8 +43,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Dapper": "1.50.1",
-    "BundlerMinifier.Core": "2.2.281"
+    "BundlerMinifier.Core": "2.2.281",
+    "Dapper": "1.50.4"
   },
 
   "tools": {
